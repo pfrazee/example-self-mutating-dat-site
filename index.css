@@ -1,0 +1,12 @@
+body {
+  font-family: sans-serif;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+a.disabled {
+  color: gray;
+  cursor: default;
+}
