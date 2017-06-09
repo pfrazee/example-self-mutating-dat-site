@@ -5,15 +5,16 @@ Example of self-mutating websites using the Dat APIs in Beaker
 The interesting code:
 
 ```js
-var selfArchive = new DatArchive('' + window.location)
-setup()
+/* globals DatArchive */
+
+var selfArchive = new DatArchive(window.location.toString())
 
 async function setup () {
   // get info about self
   var info = await selfArchive.getInfo()
 
   // setup the UI
-  // ...
+  // ... (wire up onMutate and onFork here. see index.js for full code) ...
 }
 
 async function onMutate (e) {
@@ -32,4 +33,7 @@ async function onFork (e) {
   var selfForkArchive = await DatArchive.fork(selfArchive)
   window.location = selfForkArchive.url
 }
+
+// Go!!
+setup()
 ```
